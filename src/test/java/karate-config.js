@@ -14,7 +14,7 @@ function fn() {
         config.sso_url = "https://sso-pre.int.stratio.com/login"
     }
 
-    var browser = karate.properties['browser'] || 'firefox';
+    var browser = karate.properties['browser'] || 'chrome';
     karate.log('the browser set is: ' + browser + ', default: "chrome"');
   
     var grid_url = karate.properties['grid_url'] || false;
@@ -22,7 +22,7 @@ function fn() {
 
     if (browser == 'chrome') {
         if (!grid_url) {
-           karate.configure('driver', { type: 'chrome', addOptions: ["--remote-allow-origins=*"] });
+           karate.configure('driver', { type: 'chrome', screenshotOnFailure: false, userDataDir: null, addOptions: ["--remote-allow-origins=*"] });
            karate.log("Selected Chrome");
         } else {
            karate.configure('driver', { type: 'chrome', start: false, webDriverUrl: grid_url });
@@ -33,7 +33,7 @@ function fn() {
             karate.configure('driver', { type: 'geckodriver' });
             karate.log("Selected Firefox");
         } else {
-            karate.configure('driver', { type: 'geckodriver', start: false, webDriverUrl: grid_url });
+            karate.configure('driver', { type: 'geckodriver', screenshotOnFailure: false, start: false, webDriverUrl: grid_url });
             karate.log("Selected Firefox in grid");
         }
     } 

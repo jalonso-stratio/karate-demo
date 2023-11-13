@@ -24,15 +24,14 @@ Scenario Outline: <user_login> Login
     |   "jalonso"       | "Stratio-123"     |
 
 
-Scenario: Token malformed
+Scenario: Token missing
     Given path 'user/validate'
     And request {"token":"3YfElbZ8LlWhebhO","mail":"jalonso@stratio.com"}
     When method POST
-    Then status 200
-    And print responseTime
-    And assert responseTime < 1500
+    Then status 401
+    And match $.message == "Token not found"
     
-Scenario: Token missing
+Scenario: Token malformed
 
 Scenario: PasswordExpire
 
