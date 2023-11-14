@@ -1,0 +1,15 @@
+{
+    "login":{
+        "input_username": "#input-username",
+        "input_password": "#input-password",
+        "icon_eye_on": ".icon-eye",
+        "icon_eye_off": ".icon-eye-off",
+        "forgot_password": "#login-page-login-form > p:nth-child(3) > a:nth-child(1)",
+        "button": "#login-page-login-button",
+        "title": ".login-title",
+        "under_forgot_password": ".margin-top > p:nth-child(3)",
+        "input_email": "#input-email",
+        "copyright_gray": ".copyright-gray",
+        "copyright_link": ".copyright-link"
+    }
+}

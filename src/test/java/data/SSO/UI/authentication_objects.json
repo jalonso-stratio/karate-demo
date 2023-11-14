@@ -1,0 +1,7 @@
+{
+    "authentication":{
+        "under_title": ".text-secundary",
+        "resend_code": ".copyright-link-verification",
+        "inputs": ["#input0","#input1","#input2","#input3","#input4","#input5","#input6"]
+    }
+}
