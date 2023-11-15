@@ -6,7 +6,7 @@ public class RunnerTest {
     
     @Karate.Test
     Karate testTags() {
-        return Karate.run().tags("@tests_sso_ui_login").relativeTo(getClass());
+        return Karate.run().tags("@tests_sso_api_login").relativeTo(getClass());
     }
 
 }

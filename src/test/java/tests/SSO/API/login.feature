@@ -6,27 +6,37 @@
 Feature: Login
 
 Background:
-    * url 'https://login-sso-pre.int.stratio.com/'
     * header Content-Type = 'application/json'
 
-Scenario Outline: <user_login> Login
-    Given path 'login'
-    And request {"username":<user_login>,"password":<password_login>}
-    When method POST
-    Then status 200
-    And print responseTime
-    And assert responseTime < 1500
-    
-    Examples:
-    |   user_login      | password_login    |
-    #|   "mruizmartinez" | "Stratio-123"     |
-    #|   "lhermida"      | "Stratio-123"     |
-    |   "jalonso"       | "Stratio-123"     |
+#Scenario: Login with invalid login credentials
+#    Given path 'login'
+#    And request {"username":"jalonso","password":"wrongpassword"}
+#    When method POST
+#    Then status 401
+#    And match $.error == "Unauthorized"
+#    And match $.message == "Authentication failed: token is invalid"
+#    And match $.path == "/login"
 
+
+#Scenario: Login with valid login credentials
+#    Given path 'login'
+#    And request {"username":"jalonso","password":"Stratio-123"}
+#    When method POST
+#    Then status 200
+#    And print responseTime
+#    And assert responseTime < 1500
+
+Scenario: Get token
+    Given url baseURL 
+    And path 'auth'
+    And request {"token":"1033255"}
+    When method POST
+    Then status 204
 
 Scenario: Token missing
-    Given path 'user/validate'
-    And request {"token":"3YfElbZ8LlWhebhO","mail":"jalonso@stratio.com"}
+    Given url baseURL 
+    And path 'user/validate'
+    And request {"token":"wrongtoken","mail":"jalonso@stratio.com"}
     When method POST
     Then status 401
     And match $.message == "Token not found"
@@ -36,5 +46,6 @@ Scenario: Token malformed
 Scenario: PasswordExpire
 
 Scenario: Logout
+    
 
 

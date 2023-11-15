@@ -10,6 +10,7 @@ function fn() {
 
     karate.log('Given Env: ', env);
     if (env == 'dev') {
+        baseURL = 'https://login-sso-pre.int.stratio.com/'
         config.sso_url = "https://sso-pre.int.stratio.com/login"
     }
 
